@@ -1,11 +1,9 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :update, :destroy]
+  before_action :set_service, only: [ :show ]
 
   # GET /services
   def index
-    @services = Service.all
-
-    render json: @services
+    render json: Service.all
   end
 
   # GET /services/1
@@ -13,30 +11,23 @@ class ServicesController < ApplicationController
     render json: @service
   end
 
-  # POST /services
-  def create
-    @service = Service.new(service_params)
+  # # POST /services
+  # def create
+  #   service = Service.create!(service_params)
+  #   render json: service, status: :created
+  # end
 
-    if @service.save
-      render json: @service, status: :created, location: @service
-    else
-      render json: @service.errors, status: :unprocessable_entity
-    end
-  end
+  # # PATCH/PUT /services/1
+  # def update
+  #   @service.update!(service_params)
+  #   render json: @service
+  # end
 
-  # PATCH/PUT /services/1
-  def update
-    if @service.update(service_params)
-      render json: @service
-    else
-      render json: @service.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /services/1
-  def destroy
-    @service.destroy
-  end
+  # # DELETE /services/1
+  # def destroy
+  #   @service.destroy
+  #   head :no_content
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -46,6 +37,6 @@ class ServicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def service_params
-      params.require(:service).permit(:name, :price)
+      params.permit(:name, :price)
     end
 end

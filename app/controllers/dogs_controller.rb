@@ -3,9 +3,7 @@ class DogsController < ApplicationController
 
   # GET /dogs
   def index
-    @dogs = Dog.all
-
-    render json: @dogs
+    render json: Dog.all
   end
 
   # GET /dogs/1
@@ -15,27 +13,20 @@ class DogsController < ApplicationController
 
   # POST /dogs
   def create
-    @dog = Dog.new(dog_params)
-
-    if @dog.save
-      render json: @dog, status: :created, location: @dog
-    else
-      render json: @dog.errors, status: :unprocessable_entity
-    end
+    dog = Dog.create!(dog_params)
+    render json: dog, status: :created
   end
 
   # PATCH/PUT /dogs/1
   def update
-    if @dog.update(dog_params)
-      render json: @dog
-    else
-      render json: @dog.errors, status: :unprocessable_entity
-    end
+    @dog.update!(dog_params)
+    render json: @dog
   end
 
   # DELETE /dogs/1
   def destroy
     @dog.destroy
+    head :no_content
   end
 
   private
@@ -46,6 +37,6 @@ class DogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dog_params
-      params.require(:dog).permit(:name, :age, :breed, :gender, :weight, :image, :user_id)
+      params.permit(:name, :age, :breed, :gender, :weight, :image, :user_id)
     end
 end
