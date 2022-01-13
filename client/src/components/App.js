@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavigationBar />
+      <NavigationBar user={currentUser} setCurrentUser ={setCurrentUser}/>
       <Switch>
         <Route path="/login">
           <Login setIsAuthenticated={setIsAuthenticated} setCurrentUser ={setCurrentUser}/>
