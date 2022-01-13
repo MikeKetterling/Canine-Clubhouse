@@ -31,12 +31,16 @@ function NavigationBar({setCurrentUser, user}) {
                     <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1 pe-3">
                         {user ? <h4>Hello {user.name}!</h4> : null}
-                        {user ? <Button onClick={handleLogout}>Logout</Button> : null}
+                        <br/>
                         {user ? <Link to="/home">Home</Link> : null}
                         {user ? <Link to="/profile">Profile</Link> : null}
                         {user ? <Link to="/about">Canine Club Info</Link> : null}
                         {user ? <Link to="/grooming">Grooming</Link> : null}
-                        {user ? <Link to="/boarding">Boarding</Link> : null}                        
+                        {user ? <Link to="/boarding">Boarding</Link> : null}
+                        <br/>
+                        <br/>
+                        {user ? <Button onClick={handleLogout}>Logout</Button> : null}
+                        
                         </Nav>
                     </Offcanvas.Body>
                     </Navbar.Offcanvas>

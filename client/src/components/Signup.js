@@ -49,7 +49,7 @@ function Signup({setCurrentUser}) {
         <br/>
         <h1>Create Your Account</h1>
         <br/>
-        <Col lg={2}>
+        <Col lg={4}>
 
 
           <Form onSubmit={handleSubmit}>
