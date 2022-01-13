@@ -1,11 +1,9 @@
 class GroomersController < ApplicationController
-  before_action :set_groomer, only: [:show, :update, :destroy]
+  before_action :set_groomer, only: [ :show ]
 
   # GET /groomers
   def index
-    @groomers = Groomer.all
-
-    render json: @groomers
+    render json: Groomer.all
   end
 
   # GET /groomers/1
@@ -14,29 +12,22 @@ class GroomersController < ApplicationController
   end
 
   # POST /groomers
-  def create
-    @groomer = Groomer.new(groomer_params)
-
-    if @groomer.save
-      render json: @groomer, status: :created, location: @groomer
-    else
-      render json: @groomer.errors, status: :unprocessable_entity
-    end
-  end
+  # def create
+  #   groomer = Groomer.create!(groomer_params)
+  #   render json: groomer, status: :created
+  # end
 
   # PATCH/PUT /groomers/1
-  def update
-    if @groomer.update(groomer_params)
-      render json: @groomer
-    else
-      render json: @groomer.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   @groomer.update!(groomer_params)
+  #   render json: @groomer
+  # end
 
-  # DELETE /groomers/1
-  def destroy
-    @groomer.destroy
-  end
+  # # DELETE /groomers/1
+  # def destroy
+  #   @groomer.destroy
+  #   head :no_content
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -46,6 +37,6 @@ class GroomersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def groomer_params
-      params.require(:groomer).permit(:name, :experience)
+      params.permit(:name, :experience)
     end
 end

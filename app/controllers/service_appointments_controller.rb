@@ -1,11 +1,9 @@
 class ServiceAppointmentsController < ApplicationController
-  before_action :set_service_appointment, only: [:show, :update, :destroy]
+  before_action :set_service_appointment, only: [:show, :destroy]
 
   # GET /service_appointments
   def index
-    @service_appointments = ServiceAppointment.all
-
-    render json: @service_appointments
+    render json: ServiceAppointment.all
   end
 
   # GET /service_appointments/1
@@ -15,27 +13,20 @@ class ServiceAppointmentsController < ApplicationController
 
   # POST /service_appointments
   def create
-    @service_appointment = ServiceAppointment.new(service_appointment_params)
-
-    if @service_appointment.save
-      render json: @service_appointment, status: :created, location: @service_appointment
-    else
-      render json: @service_appointment.errors, status: :unprocessable_entity
-    end
+    service_appointment = ServiceAppointment.create!(service_appointment_params)
+    render json: service_appointment, status: :created
   end
 
   # PATCH/PUT /service_appointments/1
-  def update
-    if @service_appointment.update(service_appointment_params)
-      render json: @service_appointment
-    else
-      render json: @service_appointment.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   @service_appointment.update!(service_appointment_params)
+  #   render json: @service_appointment
+  # end
 
   # DELETE /service_appointments/1
   def destroy
     @service_appointment.destroy
+    head :no_content
   end
 
   private
@@ -46,6 +37,6 @@ class ServiceAppointmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def service_appointment_params
-      params.require(:service_appointment).permit(:start, :end, :service_id, :dog_id, :groomer_id)
+      params.permit(:start, :end, :service_id, :dog_id, :groomer_id)
     end
 end
