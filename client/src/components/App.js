@@ -62,7 +62,7 @@ function App() {
         </Route>
 
         <Route path="/profile">
-          <Profile />
+          <Profile user={currentUser}/>
         </Route>
 
         <Route path="/about">
