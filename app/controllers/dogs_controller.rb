@@ -13,8 +13,10 @@ class DogsController < ApplicationController
 
   # POST /dogs
   def create
+    # byebug
     dog = Dog.create!(dog_params)
     render json: dog, status: :created
+    
   end
 
   # PATCH/PUT /dogs/1

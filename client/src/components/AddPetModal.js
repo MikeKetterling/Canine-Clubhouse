@@ -12,8 +12,10 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
         gender:'',
         weight:'',
         image:'',
-        user_id:user.user_id
+        user_id:user.id
     })
+
+    console.log(user.id)
 
     const handleChange = (e) => {
         setdogData({...dogData, [e.target.name]:e.target.value})
@@ -38,7 +40,7 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
                 gender:'',
                 weight:'',
                 image:'',
-                user_id:user.user_id
+                user_id:user.id
             })
         })
         onHide()
@@ -62,7 +64,7 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
                     <Form onSubmit={handleSubmit}>
                         <Form.Control type="text" name="name" placeholder="Dog Name" onChange={handleChange} value={dogData.name}/>
                         {/* {hasName ? null : <Form.Text className='invalid-input' style={{color: 'red'}} >You must enter a name.</Form.Text>} */}
-                        <Form.Control type="text" name="age" placeholder="Dog Age" onChange={handleChange} value={dogData.age}/>
+                        <Form.Control type="number" name="age" placeholder="Dog Age" onChange={handleChange} value={dogData.age}/>
                         {/* {hasDescription ? null : <Form.Text className='invalid-input' style={{color: 'red'}} >You must enter a description.</Form.Text>} */}
                         <Form.Control type="text" name="breed" placeholder="Dog Breed" onChange={handleChange} value={dogData.breed}/>
                         {/* {hasLocation ? null : <Form.Text className='invalid-input' style={{color: 'red'}} >You must enter a location.</Form.Text>} */}
