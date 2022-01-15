@@ -12,10 +12,9 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
         gender:'',
         weight:'',
         image:'',
-        user_id:user.id
+        user_id:(user? user.id: '')
     })
 
-    console.log(user.id)
 
     const handleChange = (e) => {
         setdogData({...dogData, [e.target.name]:e.target.value})
@@ -40,7 +39,7 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
                 gender:'',
                 weight:'',
                 image:'',
-                user_id:user.id
+                user_id:(user ? user.id : '')
             })
         })
         onHide()
