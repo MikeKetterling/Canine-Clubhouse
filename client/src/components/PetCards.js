@@ -45,9 +45,11 @@ function PetCard({dog, deleteHandler, handleUpdateDog}) {
     setShowUpdateForm(true)
   }
 
-  console.log(updateDogData.id)
+  console.log(updateDogData)
 
-  function editHandler(updateDogData) {
+  function editHandler(e) {
+    e.preventDefault()
+
         fetch(`/dogs/${updateDogData.id}`, {
             method: 'PATCH',
             headers: {

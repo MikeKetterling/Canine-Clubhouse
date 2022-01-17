@@ -23,7 +23,7 @@ class DogsController < ApplicationController
   def update
     @dog.update!(dog_params)
     render json: @dog
-    byebug
+    # byebug
 
   end
 
