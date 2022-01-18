@@ -1,10 +1,10 @@
-import {Card, Button, CardGroup, ButtonGroup, Form, Modal, ListGroup, ListGroupItem} from 'react-bootstrap'
-import React, {useState, useEffect} from "react";
-import UpdatePetModal from './UpdatePetModal'
+import {Card, Button, Form, Modal, ListGroup, ListGroupItem} from 'react-bootstrap'
+import React, {useState} from "react";
+// import UpdatePetModal from './UpdatePetModal'
 
 
 function PetCard({dog, deleteHandler, handleUpdateDog}) {
-  const [updateModalShow, setUpdateModalShow] = useState(false);
+  // const [updateModalShow, setUpdateModalShow] = useState(false);
   const [showUpdateForm, setShowUpdateForm] = useState(false)
   const [updateDogData, setUpdateDogData] = useState({
     name:'',

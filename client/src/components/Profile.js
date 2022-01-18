@@ -1,27 +1,16 @@
-import {Card, Button, CardGroup, ButtonGroup, Modal, Form,} from 'react-bootstrap'
-import React, {useState, useEffect} from "react";
+import { Button, CardGroup} from 'react-bootstrap'
+import React, {useState} from "react";
 import AddPetModal from "./AddPetModal"
 import PetCards from "./PetCards"
 
 
 
 
-function Profile({user}) {
+function Profile({user, dogs, setDogs}) {
   const [modalShow, setModalShow] = useState(false);
-  const [dogs, setDogs] = useState([])
 
   
 
-  //fetch all dogs for user
-  useEffect(() => {
-    fetch("/dogs").then((resp) => {
-      if (resp.ok) {
-        resp.json().then((dog) => {
-          setDogs(dog);
-        });
-      }
-    });
-  }, []);
 
 
   const deleteHandler = (id) => {

@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from "react";
 import {Route, Switch} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-datepicker/dist/react-datepicker.css";
 import NavigationBar from './NavigationBar';
 import Login from './Login';
 import Signup from './Signup';
@@ -20,6 +21,15 @@ import Confirmation from './Confirmation';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState([]);
+  const [dogs, setDogs] = useState([])
+  const [groomers, setGroomers] = useState([])
+  const [services, setServices] = useState([])
+  const [allGroomingAppt, setAllGroomingAppt] = useState([])
+
+
+
+
+
 
 
   useEffect(() => {
@@ -33,6 +43,26 @@ function App() {
     });
   }, []);
 
+    //All GET Fetchs
+    useEffect(() => {
+      fetch("/dogs")
+      .then(resp => resp.json())
+      .then(dog => setDogs(dog));
+        
+  
+      fetch("/groomers")
+      .then(resp => resp.json())
+      .then(data => setGroomers(data))
+  
+      fetch("/services")
+      .then(resp => resp.json())
+      .then(data => setServices(data))
+
+      fetch("/service_appointments")
+      .then(resp => resp.json())
+      .then(data => setAllGroomingAppt(data))
+    }, []);
+  
   // console.log(currentUser);
 
 
@@ -57,12 +87,12 @@ function App() {
           <Boarding />
         </Route>
 
-        <Route path="/grooming">
+        <Route exact path="/grooming">
           <Grooming />
         </Route>
 
         <Route path="/profile">
-          <Profile user={currentUser}/>
+          <Profile user={currentUser} dogs={dogs} setDogs={setDogs}/>
         </Route>
 
         <Route path="/about">
@@ -74,7 +104,7 @@ function App() {
         </Route>
 
         <Route exact path="/grooming/booking">
-          <GroomingBooking />
+          <GroomingBooking dogs={dogs} groomers={groomers} services={services} />
         </Route>
 
         <Route path="/payment">
@@ -82,7 +112,7 @@ function App() {
         </Route>
 
         <Route path="/confirmation">
-          <Confirmation />
+          <Confirmation appt={allGroomingAppt} user={currentUser}/>
         </Route>
 
         <Route path="/404">
