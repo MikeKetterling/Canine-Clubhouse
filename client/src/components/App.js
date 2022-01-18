@@ -24,9 +24,9 @@ function App() {
   const [dogs, setDogs] = useState([])
   const [groomers, setGroomers] = useState([])
   const [services, setServices] = useState([])
-  const [currentGroomingAppt, setCurrentGroomingAppt] = useState([])
+  const [allGroomingAppt, setAllGroomingAppt] = useState([])
 
-  console.log(currentGroomingAppt)
+
 
 
 
@@ -57,6 +57,10 @@ function App() {
       fetch("/services")
       .then(resp => resp.json())
       .then(data => setServices(data))
+
+      fetch("/service_appointments")
+      .then(resp => resp.json())
+      .then(data => setAllGroomingAppt(data))
     }, []);
   
   // console.log(currentUser);
@@ -100,7 +104,7 @@ function App() {
         </Route>
 
         <Route exact path="/grooming/booking">
-          <GroomingBooking dogs={dogs} groomers={groomers} services={services} appt={setCurrentGroomingAppt}/>
+          <GroomingBooking dogs={dogs} groomers={groomers} services={services} />
         </Route>
 
         <Route path="/payment">
@@ -108,7 +112,7 @@ function App() {
         </Route>
 
         <Route path="/confirmation">
-          <Confirmation currentAppt={currentGroomingAppt}/>
+          <Confirmation appt={allGroomingAppt} user={currentUser}/>
         </Route>
 
         <Route path="/404">

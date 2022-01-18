@@ -6,7 +6,7 @@ import {useHistory, Link, NavLink} from "react-router-dom"
 
 
 
-function GroomingBooking({groomers, services, dogs, appt}) {
+function GroomingBooking({groomers, services, dogs}) {
   const history = useHistory();
 
   const [groomingData, setGroomingData] = useState({
@@ -34,7 +34,6 @@ function GroomingBooking({groomers, services, dogs, appt}) {
     fetch('/service_appointments', postConfig)
     .then(resp => resp.json())
     .then(newAppt => {
-      appt(newAppt)
       setGroomingData({
         start:'',
         end:'',
