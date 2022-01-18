@@ -1,6 +1,6 @@
 // import PetCards from "./petcards"
-import {Card, Button, CardGroup, ButtonGroup, Modal, Form} from 'react-bootstrap'
-import React, {useState, useEffect} from "react";
+import { Button, Modal, Form} from 'react-bootstrap'
+import React, {useState} from "react";
 
 
 

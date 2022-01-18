@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Groomer.destroy_all
+Service.destroy_all
+
 puts "🌱 Seeding spices..."
 
 puts "seeding groomers"
