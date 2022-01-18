@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from "react";
 import {Route, Switch} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-datepicker/dist/react-datepicker.css";
 import NavigationBar from './NavigationBar';
 import Login from './Login';
 import Signup from './Signup';
@@ -23,7 +24,9 @@ function App() {
   const [dogs, setDogs] = useState([])
   const [groomers, setGroomers] = useState([])
   const [services, setServices] = useState([])
-  // const [groomingAppt, setGroomingAppt] = useState([])
+  const [currentGroomingAppt, setCurrentGroomingAppt] = useState([])
+
+  console.log(currentGroomingAppt)
 
 
 
@@ -97,7 +100,7 @@ function App() {
         </Route>
 
         <Route exact path="/grooming/booking">
-          <GroomingBooking dogs={dogs} groomers={groomers} services={services} />
+          <GroomingBooking dogs={dogs} groomers={groomers} services={services} appt={setCurrentGroomingAppt}/>
         </Route>
 
         <Route path="/payment">
@@ -105,7 +108,7 @@ function App() {
         </Route>
 
         <Route path="/confirmation">
-          <Confirmation />
+          <Confirmation currentAppt={currentGroomingAppt}/>
         </Route>
 
         <Route path="/404">

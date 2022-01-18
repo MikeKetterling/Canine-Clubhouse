@@ -1,7 +1,14 @@
 import React, {useState} from "react";
 import DateTimePicker from 'react-datetime-picker';
+import DatePicker from "react-datepicker";
+import {Form} from 'react-bootstrap'
+import {useHistory, Link, NavLink} from "react-router-dom"
 
-function GroomingBooking({groomers, services, dogs}) {
+
+
+function GroomingBooking({groomers, services, dogs, appt}) {
+  const history = useHistory();
+
   const [groomingData, setGroomingData] = useState({
     start:'',
     end:'',
@@ -11,6 +18,7 @@ function GroomingBooking({groomers, services, dogs}) {
     })
 
     const handleChange = (e) => {
+      console.log(e.target)
       setGroomingData({...groomingData, [e.target.name]:e.target.value})
     }
 
@@ -18,45 +26,52 @@ function GroomingBooking({groomers, services, dogs}) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const postConfig = {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(groomingData)
+    };
+    fetch('/service_appointments', postConfig)
+    .then(resp => resp.json())
+    .then(newAppt => {
+      appt(newAppt)
+      setGroomingData({
+        start:'',
+        end:'',
+        service_id:'',
+        dog_id:'',
+        groomer_id:'',
+      })
+    })
+    history.push("/confirmation");
   }
 
-  console.log(groomers)
-  console.log(services)
-  console.log(dogs)  
 
 
     return (
       <div className="GroomingBooking">
-        <form onSubmit={handleSubmit}>
-          <label>
-            <select name="service_id" onChange={handleChange}>
-              <option>Select a Service</option>
-               {services.map(s => <option value={s.id}>{s.name}</option>)}
-            </select>
-          </label>
-          <label>
-            <select name="groomer_id" onChange={handleChange}>
-              <option>Select an Avalable Groomer</option>
-               {groomers.map(g => <option value={g.id}>{g.name}</option>)}
-            </select>
-          </label>
-          <label>
-            <select name="dog_id" onChange={handleChange}>
-              <option>Select an Avalable Groomer</option>
-               {dogs.map(d => <option value={d.id}>{d.name}</option>)}
-            </select>
-          </label>
-          <DateTimePicker
-            onChange={onChange}
-            value={value}
-            />            
-            {/* <label>
-                <input placeholder="ATHLETE IMAGE" type="text" name="image" value={athleteData.image} onChange={handleChange}/>
-            </label> */}
+        <Form onSubmit={handleSubmit}>
+          <Form.Control as='select' name="service_id" onChange={handleChange}>
+            {services.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+          </Form.Control>
+
+          <Form.Control as='select' name="groomer_id" onChange={handleChange}>
+            {groomers.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
+          </Form.Control>
+
+          <Form.Control as='select' name="dog_id" onChange={handleChange}>
+            {dogs.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+          </Form.Control>
+
+          <Form.Control type="date" name="start" onChange={handleChange} value={groomingData.start}/>
+
+          <Form.Control type="date" name="end" onChange={handleChange} value={groomingData.end}/>
+
+
            
            
             <input type="submit" value="submit"/>
-        </form>
+        </Form>
       </div>
     );
   }
