@@ -34,11 +34,14 @@ function Profile({user, dogs, setDogs}) {
 
 
     return (
-      <div>
+      <div className="container d-flex flex-column image-list">
+        <br/>
         {/* addpet modal and button */}
         <Button variant="primary" onClick={() => setModalShow(true)}>
           Add Pet
         </Button>
+        <br/>
+
         <AddPetModal
           setDogs={setDogs}
           dogs={dogs}

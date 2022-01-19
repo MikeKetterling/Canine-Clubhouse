@@ -1,6 +1,7 @@
 // import '../App.css';
 import React, {useState, useEffect} from "react";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, NavLink} from "react-router-dom";
+import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-datepicker/dist/react-datepicker.css";
 import NavigationBar from './NavigationBar';
@@ -25,10 +26,7 @@ function App() {
   const [groomers, setGroomers] = useState([])
   const [services, setServices] = useState([])
   const [allGroomingAppt, setAllGroomingAppt] = useState([])
-
-
-
-
+  const [confirmationService, setConfirmationService] = useState([])
 
 
 
@@ -58,12 +56,15 @@ function App() {
       .then(resp => resp.json())
       .then(data => setServices(data))
 
-      fetch("/service_appointments")
-      .then(resp => resp.json())
-      .then(data => setAllGroomingAppt(data))
+
     }, []);
   
   // console.log(currentUser);
+  useEffect(() => {
+    fetch("/service_appointments")
+    .then(resp => resp.json())
+    .then(data => setAllGroomingAppt(data))
+  }, []);
 
 
 
@@ -106,7 +107,7 @@ function App() {
         </Route>
 
         <Route exact path="/grooming/booking">
-          <GroomingBooking dogs={dogs} groomers={groomers} services={services} />
+          <GroomingBooking dogs={dogs} groomers={groomers} services={services} setConfirmationService={setConfirmationService}/>
         </Route>
 
         <Route path="/payment">
@@ -114,11 +115,12 @@ function App() {
         </Route>
 
         <Route path="/confirmation">
-          <Confirmation appt={allGroomingAppt} user={currentUser}/>
+          <Confirmation appt={confirmationService} user={currentUser}/>
         </Route>
 
-        <Route path="/404">
+        <Route path="*">
           <h1>Error: 404 Page Not Found</h1>
+          <Button as={NavLink} to={"/"} variant="primary">Back to landing page</Button>
         </Route>
 
       </Switch>
