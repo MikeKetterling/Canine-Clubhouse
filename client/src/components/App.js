@@ -1,6 +1,7 @@
 // import '../App.css';
 import React, {useState, useEffect} from "react";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, NavLink} from "react-router-dom";
+import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-datepicker/dist/react-datepicker.css";
 import NavigationBar from './NavigationBar';
@@ -117,8 +118,9 @@ function App() {
           <Confirmation appt={allGroomingAppt} user={currentUser}/>
         </Route>
 
-        <Route path="/404">
+        <Route path="*">
           <h1>Error: 404 Page Not Found</h1>
+          <Button as={NavLink} to={"/"} variant="primary">Back to landing page</Button>
         </Route>
 
       </Switch>
