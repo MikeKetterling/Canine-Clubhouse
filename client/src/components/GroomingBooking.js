@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import DateTimePicker from 'react-datetime-picker';
 import DatePicker from "react-datepicker";
 import {Form, Button} from 'react-bootstrap'
-import {useHistory, Link, NavLink} from "react-router-dom"
+import {useHistory, NavLink} from "react-router-dom"
 
 
 
-function GroomingBooking({groomers, services, dogs}) {
+function GroomingBooking({groomers, services, dogs, setConfirmationService}) {
   const history = useHistory();
 
   const [groomingData, setGroomingData] = useState({
@@ -41,24 +41,31 @@ function GroomingBooking({groomers, services, dogs}) {
         dog_id:'',
         groomer_id:'',
       })
+      setConfirmationService(newAppt)
+      history.push("/confirmation");
+
     })
-    history.push("/confirmation");
   }
 
 
 
     return (
-      <div className="GroomingBooking">
+      <div className="text-center d-flex flex-column align-items-center">
+        <br/>
+        <h1>Book Grooming Appt</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Control as='select' name="service_id" onChange={handleChange}>
+            <option>CHOOSE SERVICE TYPE</option>
             {services.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
           </Form.Control>
 
           <Form.Control as='select' name="groomer_id" onChange={handleChange}>
+          <option>CHOOSE GROOMER</option>
             {groomers.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
           </Form.Control>
 
           <Form.Control as='select' name="dog_id" onChange={handleChange}>
+          <option>CHOOSE YOUR DOG</option>
             {dogs.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
           </Form.Control>
 
@@ -68,10 +75,10 @@ function GroomingBooking({groomers, services, dogs}) {
 
 
            
-           
-            <input type="submit" value="submit"/>
+          <br/>
+
+          <Button variant="primary" type="submit">Book Appt</Button>
         </Form>
-        <br/>
         <br/>
         <Button as={NavLink} to={"/grooming"} variant="primary">Back to Grooming Information</Button>
 

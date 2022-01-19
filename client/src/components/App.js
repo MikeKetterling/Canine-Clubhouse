@@ -26,10 +26,7 @@ function App() {
   const [groomers, setGroomers] = useState([])
   const [services, setServices] = useState([])
   const [allGroomingAppt, setAllGroomingAppt] = useState([])
-
-
-
-
+  const [confirmationService, setConfirmationService] = useState([])
 
 
 
@@ -59,12 +56,15 @@ function App() {
       .then(resp => resp.json())
       .then(data => setServices(data))
 
-      fetch("/service_appointments")
-      .then(resp => resp.json())
-      .then(data => setAllGroomingAppt(data))
+
     }, []);
   
   // console.log(currentUser);
+  useEffect(() => {
+    fetch("/service_appointments")
+    .then(resp => resp.json())
+    .then(data => setAllGroomingAppt(data))
+  }, []);
 
 
 
@@ -107,7 +107,7 @@ function App() {
         </Route>
 
         <Route exact path="/grooming/booking">
-          <GroomingBooking dogs={dogs} groomers={groomers} services={services} />
+          <GroomingBooking dogs={dogs} groomers={groomers} services={services} setConfirmationService={setConfirmationService}/>
         </Route>
 
         <Route path="/payment">
@@ -115,7 +115,7 @@ function App() {
         </Route>
 
         <Route path="/confirmation">
-          <Confirmation appt={allGroomingAppt} user={currentUser}/>
+          <Confirmation appt={confirmationService} user={currentUser}/>
         </Route>
 
         <Route path="*">

@@ -3,7 +3,7 @@ class ServiceAppointmentsController < ApplicationController
 
   # GET /service_appointments
   def index
-    render json: ServiceAppointment.last
+    render json: ServiceAppointment.all
   end
 
   # GET /service_appointments/1

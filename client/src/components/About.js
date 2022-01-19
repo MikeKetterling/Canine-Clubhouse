@@ -1,9 +1,10 @@
-import {Form, Button, Card, ButtonGroup, ListGroup} from 'react-bootstrap'
-import {useHistory, Link, NavLink} from "react-router-dom"
+import { Button, Card, ButtonGroup, ListGroup} from 'react-bootstrap'
+import { NavLink} from "react-router-dom"
 
 function About() {
   return (
     <div className="text-center d-flex flex-column align-items-center">
+      <br/>
       <Card style={{ width: '505px'}}>
         <Card.Img style={{height: '360px', width: '500px'}} variant="top" src="http://tworockdogranch.com/wp-content/uploads/2014/12/Big-dog-lineup-500x360.jpeg" />
         <Card.Body>

@@ -8,6 +8,8 @@ function Home() {
     return (
       <div className="container d-flex flex-column image-list">
 
+        <br/>
+        <br/>
 
           <CardGroup>
             <Card style={{ width: '18rem' }}>

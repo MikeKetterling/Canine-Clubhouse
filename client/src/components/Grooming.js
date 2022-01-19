@@ -1,17 +1,19 @@
-import {Card, Button, CardGroup, ButtonGroup, Accordion, Tab, Row, Col, ListGroup} from 'react-bootstrap'
-import {NavLink} from "react-router-dom"
+import { Button, Accordion, Tab, Row, Col, ListGroup, Nav} from 'react-bootstrap'
+import {NavLink, Link} from "react-router-dom"
 
 function Grooming({groomers, services}) {
 
-const serviceListItem = services.map((s) => <ListGroup.Item action href={`#${s.id}`}>{s.name}</ListGroup.Item> )
-const serviceTabPane = services.map((s) => <Tab.Pane eventKey={`#${s.id}`}>$ {s.price}</Tab.Pane>)
+  const serviceNavLink = services.map((s) => <Nav.Link key={s.id} eventKey={s.id}>{s.name}</Nav.Link> )
+  const serviceTabPane = services.map((s) => <Tab.Pane key={s.id} eventKey={s.id}>$ {s.price}</Tab.Pane>)
 
-const groomerListItem = groomers.map((g) => <ListGroup.Item action href={`#${g.id}`}>{g.name}</ListGroup.Item> )
-const groomerTabPane = groomers.map((g) => <Tab.Pane eventKey={`#${g.id}`}>{g.experience} years of experience</Tab.Pane>)
+  const groomerNavLink = groomers.map((g) => <Nav.Link key={g.id} eventKey={g.id}>{g.name}</Nav.Link> )
+  const groomerTabPane = groomers.map((g) => <Tab.Pane key={g.id} eventKey={g.id}>{g.experience} years of experience</Tab.Pane>)
+
+
 
 
     return (
-      <>
+      <div className="text-center  flex-column align-items-center">
         <br/>
         <br/>
         <h1>Grooming Information</h1>
@@ -33,9 +35,11 @@ const groomerTabPane = groomers.map((g) => <Tab.Pane eventKey={`#${g.id}`}>{g.ex
               <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
                 <Row>
                   <Col sm={4}>
-                    <ListGroup>
-                      {serviceListItem}
-                    </ListGroup>
+                    <Nav variant="pills" className="flex-column">
+                      <Nav.Item>
+                        {serviceNavLink}
+                      </Nav.Item>
+                    </Nav>
                   </Col>
                   <Col sm={8}>
                     <Tab.Content>
@@ -52,9 +56,11 @@ const groomerTabPane = groomers.map((g) => <Tab.Pane eventKey={`#${g.id}`}>{g.ex
               <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
                 <Row>
                   <Col sm={4}>
-                    <ListGroup>
-                      {groomerListItem}
-                    </ListGroup>
+                    <Nav variant="pills" className="flex-column">
+                      <Nav.Item>
+                        {groomerNavLink}
+                      </Nav.Item>
+                    </Nav>
                   </Col>
                   <Col sm={8}>
                     <Tab.Content>
@@ -70,7 +76,7 @@ const groomerTabPane = groomers.map((g) => <Tab.Pane eventKey={`#${g.id}`}>{g.ex
         <br/>
         <Button as={NavLink} to={"/grooming/booking"} variant="primary">Book Grooming</Button>
 
-      </>
+      </div>
     );
   }
   

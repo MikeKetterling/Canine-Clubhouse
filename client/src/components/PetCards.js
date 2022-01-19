@@ -13,7 +13,6 @@ function PetCard({dog, deleteHandler, handleUpdateDog}) {
     gender:'',
     weight:'',
     image:'',
-    // user_id:(user? user.id: '')
   })
 
   function changeUpdateHandler(e) {
@@ -29,7 +28,6 @@ function PetCard({dog, deleteHandler, handleUpdateDog}) {
     setShowUpdateForm(false)
   }
 
-  console.log(dog)
   const handleShowUpdate = () => {
     setUpdateDogData({
         name: dog.name,
@@ -39,13 +37,11 @@ function PetCard({dog, deleteHandler, handleUpdateDog}) {
         weight: dog.weight,
         image: dog.image,
         id: dog.id,
-        // user_id: user.id,
 
     })
     setShowUpdateForm(true)
   }
 
-  console.log(updateDogData)
 
   function editHandler(e) {
     e.preventDefault()
