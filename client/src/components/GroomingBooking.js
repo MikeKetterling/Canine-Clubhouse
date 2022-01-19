@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import DateTimePicker from 'react-datetime-picker';
 import DatePicker from "react-datepicker";
-import {Form} from 'react-bootstrap'
+import {Form, Button} from 'react-bootstrap'
 import {useHistory, Link, NavLink} from "react-router-dom"
 
 
@@ -71,6 +71,10 @@ function GroomingBooking({groomers, services, dogs}) {
            
             <input type="submit" value="submit"/>
         </Form>
+        <br/>
+        <br/>
+        <Button as={NavLink} to={"/grooming"} variant="primary">Back to Grooming Information</Button>
+
       </div>
     );
   }

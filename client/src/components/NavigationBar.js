@@ -10,7 +10,7 @@ function NavigationBar({setCurrentUser, user, setIsAuthenticated}) {
           if (res.ok) {
             setCurrentUser(null)
             setIsAuthenticated(false)
-            history.push("/login"); 
+            history.push("/"); 
           }
         })
   }
@@ -21,7 +21,7 @@ function NavigationBar({setCurrentUser, user, setIsAuthenticated}) {
       method: 'DELETE'
     })
     setCurrentUser([])
-    history.push("/login"); 
+    history.push("/"); 
 
   }
 

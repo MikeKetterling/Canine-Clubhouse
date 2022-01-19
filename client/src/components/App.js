@@ -73,7 +73,7 @@ function App() {
       <NavigationBar user={currentUser} setCurrentUser ={setCurrentUser} setIsAuthenticated={setIsAuthenticated}/>
       : null}
       <Switch>
-        <Route path="/login">
+        <Route exact path="/">
           <Login setIsAuthenticated={setIsAuthenticated} setCurrentUser ={setCurrentUser}/>
         </Route>
 
@@ -90,7 +90,7 @@ function App() {
         </Route>
 
         <Route exact path="/grooming">
-          <Grooming />
+          <Grooming services={services} groomers={groomers}/>
         </Route>
 
         <Route path="/profile">
