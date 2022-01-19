@@ -32,7 +32,7 @@ function Signup({setCurrentUser}) {
           setCurrentUser(user);
         })
         //reroutes to home landing page
-        history.push("/login"); 
+        history.push("/"); 
       } else {
         resp.json().then((errors) => {
           console.error(errors);
@@ -83,7 +83,7 @@ function Signup({setCurrentUser}) {
         </Col>
         <br/>
 
-        <Link to="/login">Back to Log in Page</Link>
+        <Link to="/">Back to Log in Page</Link>
 
 
       </div>
