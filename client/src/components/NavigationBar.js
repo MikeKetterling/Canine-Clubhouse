@@ -1,7 +1,7 @@
 import {useHistory, Link, NavLink} from "react-router-dom"
 import {Navbar, Container, Nav, Offcanvas, Button} from 'react-bootstrap'
 
-function NavigationBar({setCurrentUser, user}) {
+function NavigationBar({setCurrentUser, user, setIsAuthenticated}) {
   const history = useHistory();
 
   const handleLogout = () => {
@@ -9,10 +9,22 @@ function NavigationBar({setCurrentUser, user}) {
     .then(res => {
           if (res.ok) {
             setCurrentUser(null)
+            setIsAuthenticated(false)
             history.push("/login"); 
           }
         })
-}
+  }
+
+  const handleDelete = (id) => {
+    console.log(id)
+    fetch(`/users/${id}`,{
+      method: 'DELETE'
+    })
+    setCurrentUser([])
+    history.push("/login"); 
+
+  }
+
 
     return (
       <>
@@ -40,6 +52,8 @@ function NavigationBar({setCurrentUser, user}) {
                         <br/>
                         <br/>
                         {user ? <Button onClick={handleLogout}>Logout</Button> : null}
+                        {user ? <Button variant="danger" onClick={() => handleDelete(user.id)}>Delete Account</Button> : null}
+
                         
                         </Nav>
                     </Offcanvas.Body>
