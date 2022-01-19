@@ -46,9 +46,11 @@ function Profile({user, dogs, setDogs}) {
           show={modalShow}
           onHide={() => setModalShow(false)}
         />
+        {dogs ?
         <CardGroup>
           {dogs.map((dog) => {return (<PetCards key={dog.id} dog={dog} deleteHandler={deleteHandler} handleUpdateDog={handleUpdateDog}/>)})  }
         </CardGroup>
+        : null}
 
 
       </div>

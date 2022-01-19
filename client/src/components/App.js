@@ -69,7 +69,9 @@ function App() {
 
   return (
     <div className="App">
-      <NavigationBar user={currentUser} setCurrentUser ={setCurrentUser}/>
+      {isAuthenticated ?
+      <NavigationBar user={currentUser} setCurrentUser ={setCurrentUser} setIsAuthenticated={setIsAuthenticated}/>
+      : null}
       <Switch>
         <Route path="/login">
           <Login setIsAuthenticated={setIsAuthenticated} setCurrentUser ={setCurrentUser}/>

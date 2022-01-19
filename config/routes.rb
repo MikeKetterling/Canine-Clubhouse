@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :services
   resources :groomers
   resources :dogs
-  # resources :users
+  resources :users, only: [:destroy]
 
   post "/signup", to: "users#create"
   get "/me", to: "users#show"

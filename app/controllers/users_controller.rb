@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :set_user, only: [:update, :destroy]
+  before_action :set_user, only: [:destroy]
   skip_before_action :authorize, only: :create
 
   # GET /users/1
@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   def create
     user = User.create!(user_params)
     session[:user_id] = user.id
+    NewUserEmailMailer.notify_user(user).deliver_now
+
     render json: user, status: :created
   end
 
@@ -24,9 +26,10 @@ class UsersController < ApplicationController
   # end
 
   # # DELETE /users/1
-  # def destroy
-  #   @user.destroy
-  # end
+  def destroy
+    @user.destroy
+    head :no_content
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
