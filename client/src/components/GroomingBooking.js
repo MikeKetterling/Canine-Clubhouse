@@ -69,9 +69,9 @@ function GroomingBooking({groomers, services, dogs, setConfirmationService}) {
             {dogs.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
           </Form.Control>
 
-          <Form.Control type="date" name="start" onChange={handleChange} value={groomingData.start}/>
+          <Form.Control type="datetime-local" name="start" onChange={handleChange} value={groomingData.start}/>
 
-          <Form.Control type="date" name="end" onChange={handleChange} value={groomingData.end}/>
+          <Form.Control type="datetime-local" name="end" onChange={handleChange} value={groomingData.end}/>
 
 
            
