@@ -29,7 +29,7 @@ function App() {
   const [confirmationService, setConfirmationService] = useState([])
 
 
-
+  //All GET Fetchs
   useEffect(() => {
     fetch("/me").then((resp) => {
       if (resp.ok) {
@@ -41,29 +41,28 @@ function App() {
     });
   }, []);
 
-    //All GET Fetchs
-    useEffect(() => {
-      fetch("/dogs")
-      .then(resp => resp.json())
-      .then(dog => setDogs(dog));
-        
+  useEffect(() => {
+    fetch("/dogs")
+    .then(resp => resp.json())
+    .then(dog => setDogs(dog));
+  }, []);
   
-      fetch("/groomers")
-      .then(resp => resp.json())
-      .then(data => setGroomers(data))
-  
-      fetch("/services")
-      .then(resp => resp.json())
-      .then(data => setServices(data))
+  useEffect(() => {
+    fetch("/groomers")
+    .then(resp => resp.json())
+    .then(data => setGroomers(data))
+  }, []);
 
-
-    }, []);
-  
-  // console.log(currentUser);
   useEffect(() => {
     fetch("/service_appointments")
     .then(resp => resp.json())
     .then(data => setAllGroomingAppt(data))
+  }, []);
+
+  useEffect(() => {
+    fetch("/services")
+    .then(resp => resp.json())
+    .then(data => setServices(data))
   }, []);
 
 
