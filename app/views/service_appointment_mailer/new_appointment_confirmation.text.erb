@@ -1,0 +1,7 @@
+Hello <%= @user.name %>!
+
+Thank you for booking a service appointment with Canine Clubhouse!
+Your appointment details are below:
+<%= @appt.service.name%> for <%= @appt.dog.name%> starting at <%= @appt.start%>.
+<%= @appt.dog.name%> will be cared for by <%= @appt.groomer.name%>.
+<%= @appt.dog.name%> will be ready for pickup at <%= @appt.end%>.
