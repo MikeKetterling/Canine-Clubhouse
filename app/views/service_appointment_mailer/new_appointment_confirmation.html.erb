@@ -1,0 +1,8 @@
+<h1>Hello <%= @user.name %>!</h1>
+
+<h3>Thank you for booking a service appointment with Canine Clubhouse!
+Your appointment details are below:
+</h3>
+<p><%= @appt.service.name%> for <%= @appt.dog.name%> starting at <%= @appt.start%>.</p>
+<p><%= @appt.dog.name%> will be cared for by <%= @appt.groomer.name%>.</p>
+<p><%= @appt.dog.name%> will be ready for pickup at <%= @appt.end%>.</p>
