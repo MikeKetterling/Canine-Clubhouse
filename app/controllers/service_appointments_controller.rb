@@ -14,7 +14,7 @@ class ServiceAppointmentsController < ApplicationController
   # POST /service_appointments
   def create
     service_appointment = ServiceAppointment.create!(service_appointment_params)
-    ServiceAppointmentMailer.new_appointment_confirmation(service_appointment, @current_user)
+    ServiceAppointmentMailer.new_appointment_confirmation(service_appointment).deliver_now
     render json: service_appointment, status: :created
   end
 
