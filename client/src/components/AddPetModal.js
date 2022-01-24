@@ -12,7 +12,7 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
         gender:'',
         weight:'',
         image:'',
-        pet_image: null,
+        // pet_image: null,
         user_id:(user? user.id: '')
     })
 
@@ -40,7 +40,7 @@ console.log(dogData)
                 gender:'',
                 weight:'',
                 image:'',
-                pet_image: null,
+                // pet_image: null,
                 user_id:(user ? user.id : '')
             })
         })
@@ -74,7 +74,7 @@ console.log(dogData)
                         <Form.Control type="number" name="weight" placeholder="Dog Weight" onChange={handleChange} value={dogData.weight}/>
                         <Form.Control type="text" name="image" placeholder="Dog Image" onChange={handleChange} value={dogData.image}/>
 
-                        <Form.Control type="file" name="pet_image" placeholder="Dog Image Upload" onChange={handleChange} value={dogData.pet_image}/>
+                        {/* <Form.Control type="file" name="pet_image" placeholder="Dog Image Upload" onChange={handleChange} value={dogData.pet_image}/> */}
 
                         <Button type="submit" value="submit" variant="primary">
                         Create Pet
