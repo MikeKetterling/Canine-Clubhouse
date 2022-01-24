@@ -5,10 +5,9 @@ class ServiceAppointmentMailer < ApplicationMailer
   #
   #   en.service_appointment_mailer.new_appointment_confirmation.subject
   #
-  def new_appointment_confirmation(service_appointment, current_user)
-    @user = current_user
+  def new_appointment_confirmation(service_appointment)
     @appt = service_appointment
 
-    mail to: @user.email, subject: "Appointment confirmation for #{@appt.dog.name}"
+    mail to: @appt.dog.user.email, subject: "Appointment confirmation for #{@appt.dog.name}"
   end
 end
