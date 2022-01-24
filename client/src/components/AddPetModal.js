@@ -12,6 +12,7 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
         gender:'',
         weight:'',
         image:'',
+        // pet_image: null,
         user_id:(user? user.id: '')
     })
 
@@ -20,7 +21,7 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
         setdogData({...dogData, [e.target.name]:e.target.value})
     }
 
-
+console.log(dogData)
     function handleSubmit(e) {
         e.preventDefault()
         const postConfig = {
@@ -39,6 +40,7 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
                 gender:'',
                 weight:'',
                 image:'',
+                // pet_image: null,
                 user_id:(user ? user.id : '')
             })
         })
@@ -71,6 +73,9 @@ function AddPetModal({show, onHide, user, setDogs, dogs}) {
                         {/* {hasDate ? null : <Form.Text className='invalid-input' style={{color: 'red'}} >You must enter a date.</Form.Text>} */}
                         <Form.Control type="number" name="weight" placeholder="Dog Weight" onChange={handleChange} value={dogData.weight}/>
                         <Form.Control type="text" name="image" placeholder="Dog Image" onChange={handleChange} value={dogData.image}/>
+
+                        {/* <Form.Control type="file" name="pet_image" placeholder="Dog Image Upload" onChange={handleChange} value={dogData.pet_image}/> */}
+
                         <Button type="submit" value="submit" variant="primary">
                         Create Pet
                         </Button>
