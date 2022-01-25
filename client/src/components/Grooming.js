@@ -1,5 +1,5 @@
-import { Button, Accordion, Tab, Row, Col, ListGroup, Nav} from 'react-bootstrap'
-import {NavLink, Link} from "react-router-dom"
+import { Button, Accordion, Tab, Row, Col, Nav} from 'react-bootstrap'
+import {NavLink} from "react-router-dom"
 
 function Grooming({groomers, services}) {
 

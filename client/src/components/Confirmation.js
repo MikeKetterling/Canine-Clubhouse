@@ -23,6 +23,7 @@ const groomer = appt.groomer.name
               Below are the details of your last booking:
               <br/>
               Your Grooming appointment for {dog}, will begin at {appt.start.slice(0,10)} with {groomer}. 
+              <br/> 
               {dog} will have {service} service completed by {appt.end.slice(0,10)}.
               <br/>
               Thank You!
