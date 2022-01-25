@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import DateTimePicker from 'react-datetime-picker';
-import DatePicker from "react-datepicker";
 import {Form, Button} from 'react-bootstrap'
 import {useHistory, NavLink} from "react-router-dom"
 
