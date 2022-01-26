@@ -25,8 +25,11 @@ function App() {
   const [dogs, setDogs] = useState([])
   const [groomers, setGroomers] = useState([])
   const [services, setServices] = useState([])
+  const [rooms, setRooms] = useState([])
   const [allGroomingAppt, setAllGroomingAppt] = useState([])
+  const [allRoomAppt, setAllRoomAppt] = useState([])
   const [confirmationService, setConfirmationService] = useState([])
+  const [confirmationRoom, setConfirmationRoom] = useState([])
 
 
   //All GET Fetchs
@@ -51,7 +54,15 @@ function App() {
     fetch("/groomers")
     .then(resp => resp.json())
     .then(data => setGroomers(data))
-  }, []);
+    
+    fetch("/rooms")
+    .then(resp => resp.json())
+    .then(data => setRooms(data))
+
+    fetch("/services")
+    .then(resp => resp.json())
+    .then(data => setServices(data))
+  }, [currentUser]);
 
   useEffect(() => {
     fetch("/service_appointments")
@@ -59,11 +70,6 @@ function App() {
     .then(data => setAllGroomingAppt(data))
   }, []);
 
-  useEffect(() => {
-    fetch("/services")
-    .then(resp => resp.json())
-    .then(data => setServices(data))
-  }, []);
 
 
 
@@ -85,8 +91,8 @@ function App() {
           <Home />
         </Route>
 
-        <Route path="/boarding">
-          <Boarding />
+        <Route exact path="/boarding">
+          <Boarding rooms={rooms}/>
         </Route>
 
         <Route exact path="/grooming">
@@ -102,7 +108,7 @@ function App() {
         </Route>
 
         <Route exact path="/boarding/booking">
-          <BoardingBooking />
+          <BoardingBooking dogs={dogs} rooms={rooms} setConfirmationRoom={setConfirmationRoom}/>
         </Route>
 
         <Route exact path="/grooming/booking">

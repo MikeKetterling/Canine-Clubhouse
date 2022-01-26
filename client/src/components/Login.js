@@ -64,7 +64,7 @@ function Login({setIsAuthenticated, setCurrentUser}) {
             </Form>
           </Col>
           <br/>
-          <Link exact to="/signup">Don't have an account? Create one here</Link>
+          <Link style={{ color: 'black' }} exact to="/signup">Don't have an account? Create one here</Link>
 
       </div>
     );
