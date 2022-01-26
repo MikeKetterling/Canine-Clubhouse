@@ -3,8 +3,8 @@ import {NavLink} from "react-router-dom"
 
 function Grooming({groomers, services}) {
 
-  const serviceNavLink = services.map((s) => <Nav.Link key={s.id} eventKey={s.id}>{s.name}</Nav.Link> )
-  const serviceTabPane = services.map((s) => <Tab.Pane key={s.id} eventKey={s.id}>$ {s.price}</Tab.Pane>)
+  const serviceNavLink = services.map((s) => <Nav.Link key={s.id} eventKey={s.id}>{s.name} </Nav.Link> )
+  const serviceTabPane = services.map((s) => <Tab.Pane key={s.id} eventKey={s.id}>$ {s.price} <br/> {s.description}</Tab.Pane>)
 
   const groomerNavLink = groomers.map((g) => <Nav.Link key={g.id} eventKey={g.id}>{g.name}</Nav.Link> )
   const groomerTabPane = groomers.map((g) => <Tab.Pane key={g.id} eventKey={g.id}>{g.experience} years of experience</Tab.Pane>)

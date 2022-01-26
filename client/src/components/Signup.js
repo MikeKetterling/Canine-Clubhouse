@@ -83,7 +83,7 @@ function Signup({setCurrentUser}) {
         </Col>
         <br/>
 
-        <Link to="/">Back to Log in Page</Link>
+        <Link style={{ color: 'black' }} to="/">Back to Log in Page</Link>
 
 
       </div>

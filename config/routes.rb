@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :room_appointments
+  resources :rooms
   resources :service_appointments
   resources :services
   resources :groomers
