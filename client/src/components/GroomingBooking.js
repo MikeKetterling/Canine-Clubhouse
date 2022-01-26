@@ -40,7 +40,7 @@ function GroomingBooking({groomers, services, dogs, setConfirmationService}) {
         groomer_id:'',
       })
       setConfirmationService(newAppt)
-      history.push("/confirmation");
+      history.push("/grooming/confirmation");
 
     })
   }

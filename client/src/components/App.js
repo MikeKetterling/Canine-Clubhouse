@@ -15,7 +15,8 @@ import GroomingBooking from './GroomingBooking';
 import Profile from './Profile';
 import About from './About';
 import Payment from './Payment';
-import Confirmation from './Confirmation';
+import GroomingConfirmation from './GroomingConfirmation';
+import BoardingConfirmation from './BoardingConfirmation';
 
 
 
@@ -48,7 +49,7 @@ function App() {
     fetch("/dogs")
     .then(resp => resp.json())
     .then(dog => setDogs(dog));
-  }, []);
+  }, [currentUser]);
   
   useEffect(() => {
     fetch("/groomers")
@@ -119,8 +120,12 @@ function App() {
           <Payment />
         </Route>
 
-        <Route path="/confirmation">
-          <Confirmation appt={confirmationService} user={currentUser}/>
+        <Route exact path="/grooming/confirmation">
+          <GroomingConfirmation srvcAppt={confirmationService} user={currentUser}/>
+        </Route>
+
+        <Route exact path="/boarding/confirmation">
+          <BoardingConfirmation brdAppt={confirmationRoom} user={currentUser}/>
         </Route>
 
         <Route path="*">

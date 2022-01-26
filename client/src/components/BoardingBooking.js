@@ -34,7 +34,7 @@ function BoardingBooking({rooms, dogs, setConfirmationRoom}) {
           dog_id:'',
         })
         setConfirmationRoom(newAppt)
-        history.push("/confirmation");
+        history.push("/boarding/confirmation");
       })
     }
   

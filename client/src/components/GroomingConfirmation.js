@@ -2,11 +2,11 @@ import { Button, Card} from 'react-bootstrap'
 
 import {NavLink} from "react-router-dom"
 
-function Confirmation({appt, user}) {
+function GroomingConfirmation({srvcAppt, user}) {
 
-const dog = appt.dog.name
-const service = appt.service.name
-const groomer = appt.groomer.name
+const dog = srvcAppt.dog.name
+const service = srvcAppt.service.name
+const groomer = srvcAppt.groomer.name
 
 
 
@@ -22,9 +22,9 @@ const groomer = appt.groomer.name
             <Card.Text>
               Below are the details of your last booking:
               <br/>
-              Your Grooming appointment for {dog}, will begin at {appt.start.slice(0,10)} with {groomer}. 
+              Your Grooming appointment for {dog}, will begin on {srvcAppt.start.slice(0,10)}, at {srvcAppt.start.slice(11,16)} with {groomer}. 
               <br/> 
-              {dog} will have {service} service completed by {appt.end.slice(0,10)}.
+              {dog} will have {service} service completed on {srvcAppt.end.slice(0,10)}, at {srvcAppt.end.slice(11,16)}.
               <br/>
               Thank You!
             </Card.Text>
@@ -36,5 +36,5 @@ const groomer = appt.groomer.name
     );
   }
   
-  export default Confirmation;
+  export default GroomingConfirmation;
   
