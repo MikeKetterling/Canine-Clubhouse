@@ -1,0 +1,6 @@
+Hello <%= @appt.dog.user.name %>!
+
+Thank you for booking a Boarding appointment with Canine Clubhouse!
+Your appointment details are below:
+<%= @appt.room.name%> for <%= @appt.dog.name%> starting at <%= @appt.start%>.
+<%= @appt.dog.name%> will be ready for pickup at <%= @appt.end%>.

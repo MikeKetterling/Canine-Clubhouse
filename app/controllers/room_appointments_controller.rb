@@ -14,7 +14,7 @@ class RoomAppointmentsController < ApplicationController
   # POST /room_appointments
   def create
     room_appointment = RoomAppointment.create!(room_appointment_params)
-    # RoomAppointmentMailer.new_appointment_confirmation(room_appointment).deliver_now
+    RoomAppointmentMailer.new_appointment_confirmation(room_appointment).deliver_now
     render json: room_appointment, status: :created
   end
 
