@@ -64,8 +64,8 @@ function PetCard({dog, deleteHandler, handleUpdateDog}) {
 
     return (
       <>
-        <Card style={{ width: '18rem' }}>
-          <Card.Img style={{ height: '22rem' }} variant="top" src={dog.image} />
+        <Card style={{ width: '22rem' }}>
+          <Card.Img style={{ height: '22rem'}} variant="top" src={dog.image} />
           <Card.Body>
             <Card.Title>{dog.name}</Card.Title>
           </Card.Body>
