@@ -17,10 +17,10 @@ function Boarding({rooms}) {
           <Accordion.Item eventKey="0">
             <Accordion.Header>General Boarding Info</Accordion.Header>
             <Accordion.Body>
-              Need to get rid of the puppy smell? We're here to help!  Our services have been 
-              developed and refined to focus on your dogs care and happiness, 
-              and our groomers have been trained rigiourosly in both attention to detail and dog care.  
-              We strive to make Canine Clubhouse a second home for your pets and family.
+              Going out of town, and want to give your dog a vacation of their own?  
+              Our facility and staff provide the utmost care for your pet, we treat your dogs like they are our own!
+              With themed rooms for your pets to stay, and grooming services and activities for them to take part in,
+               your dogs will have the time of their life at Canine Clubhouse!
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">

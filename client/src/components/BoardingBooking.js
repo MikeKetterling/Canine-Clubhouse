@@ -54,8 +54,10 @@ function BoardingBooking({rooms, dogs, setConfirmationRoom}) {
             {dogs.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
           </Form.Control>
 
+          <Form.Label>Start of Appointment</Form.Label>
           <Form.Control type="datetime-local" name="start" onChange={handleChange} value={roomData.start}/>
-
+          
+          <Form.Label>End of Appointment</Form.Label>
           <Form.Control type="datetime-local" name="end" onChange={handleChange} value={roomData.end}/>
 
           <br/>
